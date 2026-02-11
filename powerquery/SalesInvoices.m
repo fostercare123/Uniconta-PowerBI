@@ -1,5 +1,5 @@
 // =============================================================================
-// POWER QUERY CLEAN‑UP SCRIPT
+// POWER QUERY CLEAN‑UP SCRIPT
 // =============================================================================
 //
 //  Description
@@ -17,7 +17,7 @@
 //
  // Usage
  // -----
- // 1. Open Power BI Desktop → Home → Transform data → Advanced Editor.
+ // 1. Open Power BI Desktop → Home → Transform data → Advanced Editor.
  // 2. Replace the existing code with the block below.
  // 3. Click **Done**, then **Close & Apply**.
  // 4. Build visualisations using the columns that appear in the final table.
@@ -165,7 +165,7 @@ let
     // ---------------------------------------------------------------------
     // 5 TURN RAW PERCENT VALUES INTO REAL PERCENTAGES
     // ---------------------------------------------------------------------
-    // Source stores 15 % as “15”. Power BI expects 0.15 for a percentage.
+    // Source stores 15 % as “15”. Power BI expects 0.15 for a percentage.
     Percentages = Table.TransformColumns(
         NumbersFixed,
         {
@@ -232,5 +232,5 @@ let
         }
     )
 in
-    // The final table that will be loaded into the Power BI model.
+    // The final table that will be loaded into the Power BI model.
     Ordered
