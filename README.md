@@ -1,46 +1,53 @@
-# Uniconta-PowerBI
-This repository contains the end-to-end data pipeline for extracting, cleaning, and transforming Uniconta ERP data for Power BI reporting.
+# Uniconta ↔ Power BI Data Pipeline
 
-📂 Project Structure
-/scripts: Python-based data extraction engine.
+An end-to-end solution for extracting, cleaning, and transforming Uniconta ERP data for Power BI reporting.
 
-main/flush_and_fill.py: The core script that fetches transactional and master data via OData API.
+## 📁 Project Structure
+```
+├─ scripts/
+│   ├─ main/
+│   │   └─ flush_and_fill.py       # Core “Flush & Fill” engine
+│   └─ scrapers/
+│       └─ fetch_api_metadata.py   # Helper to discover Uniconta tables
+├─ powerquery/
+│   └─ SalesInvoices.m             # M script – Danish-labelled invoices
+├─ docs/
+│   └─ …                           # Diagrams, docs, flowcharts
+└─ requirements.txt                # Python dependencies
+```
 
-scrapers/fetch_api_metadata.py: Utility to scout available Uniconta tables.
+## ⚙️ Core Logic: "Flush and Fill"
 
-/powerquery: Power Query (M) scripts for data transformation.
+The pipeline follows a strict **Flush and Fill** methodology to guarantee data integrity:
 
-SalesInvoices.m: Standardized transformation for invoice data with Danish labels.
+- **Flush**  
+  Every refresh **completely clears** the existing data in the Power BI model.
 
-/docs: Documentation and logic flow diagrams.
+- **Fill**  
+  A fresh copy of **all relevant data** is downloaded directly from the Uniconta OData API.
 
-⚙️ Core Logic: "Flush and Fill"
-The pipeline follows a strict Flush and Fill methodology to ensure data integrity:
+- **Why?**  
+  This approach eliminates problems with deleted, modified or partially synced records — the report always shows **the current true state** of Uniconta.
 
-Flush: Every refresh completely clears the existing data in the Power BI model.
+## 🚀 Getting Started
 
-Fill: A fresh copy of all data (filtered from 2020-01-01 onwards) is downloaded from the Uniconta API.
+### 1. Prerequisites
+- Python
+- Power BI Desktop
+- Uniconta user with API access
 
-Accuracy: This eliminates issues with deleted or modified records in the ERP, as the report always reflects the current state of Uniconta.
-
-🚀 Getting Started
-1. Prerequisites
-Ensure you have Python installed and the required libraries:
-
-Bash
+Install required Python packages:
+```bash
 pip install -r requirements.txt
-2. Environment Variables
-To secure API credentials, create a .env file in the root directory (this file is ignored by Git):
+```
 
-Plaintext
+### 2. Environment Variables
+Create a `.env` file in the root directory (remember to add it to `.gitignore`):
+
+```plaintext
 UNICONTA_USER=your_username
 UNICONTA_PASS=your_password
-3. Usage
-Run the Python script to fetch raw data: python scripts/main/flush_and_fill.py.
+```
 
-Open Power BI and refresh to apply the transformations located in /powerquery.
-
-🛠 Technical Standards
-Renaming Logic: We use a Hybrid Approach. Internal Power Query steps and comments are in English for IT maintenance, while final column headers are in Danish for business user clarity.
-
-Performance: Transactional tables (Invoices, Ledger, Stock) are filtered to start from 2020-01-01 to ensure fast refresh times.
+### 3. Usage
+Paste the Python code `flush_and_fill.py` into Power BI.
