@@ -1,5 +1,5 @@
 let
-    /* Accessing the mapping files from the /docs folder */
+    /* Access your two queries that now use the ProjectPath parameter */
     Standard = Uniconta_Labels_Standard,
     Custom = Uniconta_Labels_Custom,
 
@@ -10,7 +10,7 @@ let
     SelectedColumns = Table.SelectColumns(Combined, {"TechnicalID", "DisplayName"}),
 
     /* FIX: Remove any rows where IDs or Names are null or empty. 
-       This prevents lopsided lists that cause the RenameOperations error. */
+       This prevents the 'RenameOperations' error. */
     CleanRows = Table.SelectRows(SelectedColumns, each 
         ([TechnicalID] <> null and [TechnicalID] <> "") and 
         ([DisplayName] <> null and [DisplayName] <> "")
