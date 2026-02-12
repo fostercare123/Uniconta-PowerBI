@@ -1,5 +1,10 @@
+/*
+    The 'Brain' of the renaming system. 
+    Combines Standard and Custom labels, ensuring Custom renames 
+    take precedence over Standard ones.
+*/
 let
-    /* Access your two queries that now use the ProjectPath parameter */
+    /* Access your two queries that the ProjectPath parameter */
     Standard = Uniconta_Labels_Standard,
     Custom = Uniconta_Labels_Custom,
 
