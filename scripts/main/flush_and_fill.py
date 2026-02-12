@@ -82,8 +82,8 @@ URLS = {
     "BOMs":             f"{BASE_URL}InvBOMClientUser",
 
     # -- Sales --
-    "SalesInvoices":    f"{BASE_URL}DebtorInvoiceClientUser",
-    "InvoiceLines":     f"{BASE_URL}DebtorInvoiceLinesUser",
+    "Fakturaer":        f"{BASE_URL}DebtorInvoiceClientUser", # Matches Power BI Query
+    "Fakturalinjer":    f"{BASE_URL}DebtorInvoiceLinesUser",  # Matches Power BI Query
     "StockMovements":   f"{BASE_URL}InvTransClient",
     "SerialNumbers":    f"{BASE_URL}InvSerieBatchClientUser",
 
@@ -305,8 +305,8 @@ ProductionPosted = data_results.get("ProductionPosted", pd.DataFrame())
 BOMs             = data_results.get("BOMs", pd.DataFrame())
 
 # Sales & Operations
-SalesInvoices = data_results.get("SalesInvoices", pd.DataFrame())
-InvoiceLines  = data_results.get("InvoiceLines", pd.DataFrame())
+Fakturaer      = data_results.get("Fakturaer", pd.DataFrame())
+Fakturalinjer  = data_results.get("Fakturalinjer", pd.DataFrame())
 StockMovements = data_results.get("StockMovements", pd.DataFrame())
 SerialNumbers  = data_results.get("SerialNumbers", pd.DataFrame())
 SalesOffers    = data_results.get("SalesOffers", pd.DataFrame())
