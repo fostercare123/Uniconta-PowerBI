@@ -1,6 +1,5 @@
 # === Power BI ===
 *.pbix
-# Vi beholder .pbit (templates), da de ikke indeholder data
 !*.pbit
 
 # === Python & Credentials ===
@@ -24,7 +23,7 @@ available_tables.json
 Thumbs.db
 .DS_Store
 
-# === Undtagelser (Sikrer at disse ALDRIG blokeres) ===
+# === Exceptions. These will never be blocked ===
 !*.m
 !requirements.txt
 !*.py
