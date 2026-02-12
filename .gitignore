@@ -1,9 +1,24 @@
+# ====================================================================
+# GITIGNORE EXPLANATION:
+# * (Asterisk/Wildcard): Represents "anything."
+#   *.pbix ignores every file ending in .pbix to prevent data leaks.
+#
+# ! (Exclamation/Negation): An exception to the rules.
+#   !*.pbit ensures templates are kept even if binaries are blocked.
+#
+# / (Forward Slash): Used for entire directories/folders.
+#   env/ ignores the whole folder and its contents.
+#
+# . (Dot): Used for hidden system files or specific extensions.
+# ====================================================================
+
 # === Power BI ===
+# Exclude heavy data files, but keep templates for structure
 *.pbix
-# Vi beholder .pbit (templates), da de ikke indeholder data
 !*.pbit
 
 # === Python & Credentials ===
+# Protect sensitive credentials and local environment settings
 .env
 __pycache__/
 *.pyc
@@ -15,16 +30,19 @@ env/
 venv/
 
 # === Uniconta / API Metadata ===
+# Exclude temporary metadata generated during API calls
 available_tables.json
 
 # === OS & IDE ===
+# Clean up system-generated "junk" files and IDE-specific settings
 .vscode/
 .history/
 .idea/
 Thumbs.db
 .DS_Store
 
-# === Undtagelser (Sikrer at disse ALDRIG blokeres) ===
+# === Absolute Exceptions ===
+# Ensure core logic and configuration are ALWAYS tracked
 !*.m
 !requirements.txt
 !*.py
