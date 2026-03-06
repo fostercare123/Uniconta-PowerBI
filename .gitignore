@@ -29,10 +29,6 @@ __pycache__/
 env/
 venv/
 
-# === Uniconta / API Metadata ===
-# Exclude temporary metadata generated during API calls
-available_tables.json
-
 # === OS & IDE ===
 # Clean up system-generated "junk" files and IDE-specific settings
 .vscode/
